@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
- abstract class BaseViewHolder : RecyclerView.ViewHolder {
+ abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-     constructor(itemView: View) : super(itemView)
      @SuppressLint("UseSparseArrays")
      private val viewHashMap  = HashMap<Int?,View>();
 

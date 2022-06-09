@@ -13,25 +13,17 @@ import com.example.app.R
 import com.example.base.utils.Utils
 import kotlin.random.Random
 
-class CodeView : AppCompatTextView {
+class CodeView (context: Context,attrs: AttributeSet?): AppCompatTextView(context,attrs) {
 
-     constructor(context : Context) : this(context,null)
-
-     constructor(context: Context, attrs : AttributeSet?): super(context, attrs){
-         setTextSize(TypedValue.COMPLEX_UNIT_SP,18f)
-         gravity=Gravity.CENTER
-         setBackgroundColor(getContext().getColor(com.google.android.material.R.color.design_dark_default_color_primary_dark))
-         setTextColor(Color.WHITE)
-
-         paint.isAntiAlias=true
-         paint.style= Paint.Style.STROKE
-         paint.setColor(getContext().getColor(com.google.android.material.R.color.design_default_color_background))
-         paint.strokeWidth = Utils.dp2px(6f)
-
-         updateCode();
-     }
-
-    private val paint = Paint()
+    /**
+     * 作用域函数 applu 没有返回值 经常用于初始化
+     */
+    private val paint = Paint().apply {
+        isAntiAlias=true
+        style= Paint.Style.STROKE
+        setColor(getContext().getColor(com.google.android.material.R.color.design_default_color_background))
+        strokeWidth = Utils.dp2px(6f)
+    }
     private val codeList = arrayOf(
         "kotlin",
         "android",
@@ -43,6 +35,16 @@ class CodeView : AppCompatTextView {
         "tcp/ip"
     )
 
+     constructor(context : Context) : this(context,null)
+
+     init{
+         setTextSize(TypedValue.COMPLEX_UNIT_SP,18f)
+         gravity=Gravity.CENTER
+         setBackgroundColor(getContext().getColor(com.google.android.material.R.color.design_dark_default_color_primary_dark))
+         setTextColor(Color.WHITE)
+         updateCode();
+     }
+
        fun updateCode(){
         val random = Random.nextInt(codeList.size)
         val code = codeList.get(random)
@@ -53,6 +55,5 @@ class CodeView : AppCompatTextView {
         canvas.drawLine(0f,height.toFloat(),width.toFloat(),0f,paint)
         super.onDraw(canvas)
     }
-
 
 }

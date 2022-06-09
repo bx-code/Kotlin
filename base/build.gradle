@@ -41,4 +41,5 @@ dependencies {
     api "com.google.code.gson:gson:2.8.5"
     api 'com.squareup.okhttp3:okhttp:3.12.0'
     api 'androidx.recyclerview:recyclerview-selection:1.1.0'
+    api 'com.squareup.retrofit2:retrofit:2.6.0'
 }

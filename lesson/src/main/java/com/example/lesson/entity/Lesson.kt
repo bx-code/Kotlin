@@ -1,6 +1,7 @@
 package com.example.lesson.entity
 
-class Lesson {
+data class Lesson  constructor(var date:String,var content: String,var state:State){
+
     enum class State{
         PLAYBACK {
             override fun toString(): String {
@@ -22,14 +23,6 @@ class Lesson {
         public abstract override fun  toString():String
     }
 
-    lateinit var date : String
-    lateinit var content:String
-    lateinit var state:State
 
-    constructor(date:String,content: String,state:State){
-        this.date=date
-        this.content=content
-        this.state=state
-    }
 
 }

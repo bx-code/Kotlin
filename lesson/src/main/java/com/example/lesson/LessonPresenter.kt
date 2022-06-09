@@ -38,12 +38,18 @@ class LessonPresenter  {
     }
 
     fun showPlayback(){
-        var playbackLesson : MutableList<Lesson> = ArrayList<Lesson>()
-        for (lesson in lessons){
-             if(lesson.state == Lesson.State.PLAYBACK){
-                 playbackLesson.add(lesson)
-             }
-        }
-        activity.showResult(playbackLesson)
+//        var playbackLesson : MutableList<Lesson> = ArrayList<Lesson>()
+//        for (lesson in lessons){
+//             if(lesson.state == Lesson.State.PLAYBACK){
+//                 playbackLesson.add(lesson)
+//             }
+//        }
+          activity.showResult( lessons.filter { it.state == Lesson.State.PLAYBACK})
+//        playbackLesson.forEach{
+//             if(it.state == Lesson.State.PLAYBACK){
+//                 playbackLesson.add(it)
+//             }
+//        }
+//        activity.showResult(playbackLesson)?
     }
 }
